@@ -1,0 +1,45 @@
+<h1>Help, i'm Hungry!</h1>
+
+<form class="form" [formGroup]="findInfo">
+
+  <mat-form-field for="city">
+    <mat-label class="city">City:</mat-label>
+    <input class="city" formControlName="city" type="text" name="city" matInput placeholder="city">
+  </mat-form-field>
+
+  <mat-form-field for="state">
+    <mat-label class="state">State:</mat-label>
+    <input class="state" formControlName="state" type="text" name="state" matInput placeholder="state">
+  </mat-form-field>
+
+  <mat-form-field for="price">
+    <mat-label class="price">Price:</mat-label>
+    <mat-select class="price" formControlName="price" name="price">
+      <mat-option *ngFor="let price of prices" [value]="price.value">{{price.view}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+
+  <button (click)="onFindInfo()">Search</button>
+</form>
+
+
+<div class="display" *ngIf="display">
+  <img class="img" src="{{display.image_url}}" />
+  <p>{{display.name}}</p>
+  <p>{{display.location.address1}}</p>
+  <p>{{display.display_phone}}</p>
+  <img *ngIf="display.rating === 0" src="../../../assets/regular/regular_0.png">
+  <img *ngIf="display.rating === 1" src="../../../assets/regular/regular_1.png">
+  <img *ngIf="display.rating === 1.5" src="../../../assets/regular/regular_1_half.png">
+  <img *ngIf="display.rating === 2" src="../../../assets/regular/regular_2.png">
+  <img *ngIf="display.rating === 2.5" src="../../../assets/regular/regular_2_half.png">
+  <img *ngIf="display.rating === 3" src="../../../assets/regular/regular_3.png">
+  <img *ngIf="display.rating === 3.5" src="../../../assets/regular/regular_3_half.png">
+  <img *ngIf="display.rating === 4" src="../../../assets/regular/regular_4.png">
+  <img *ngIf="display.rating === 4.5" src="../../../assets/regular/regular_4_half.png">
+  <img *ngIf="display.rating === 5" src="../../../assets/regular/regular_5.png">
+  <p *ngIf="delivery">Delivers</p>
+  <p *ngIf="!delivery">Does not deliver</p>
+</div>
